@@ -18,19 +18,40 @@
     <div class="container">
       <div class="weather-app-wrapper">
         <div class="weather-app">
+          <form id="search-form" class="mb-3">
+            <div class="row">
+              <div class="col-9">
+                <input
+                  type="search"
+                  placeholder="Write a city"
+                  class="form-control"
+                  id="city-input"
+                />
+              </div>
+              <div class="col-3">
+                <input
+                  type="submit"
+                  value="Search"
+                  class="btn btn-primary w-100"
+                />
+              </div>
+            </div>
+          </form>
           <div class="overview">
-            <h1 id="city"></h1>
+            <h1 id="city" class="mb-1"></h1>
             <ul>
               <li id="date"></li>
               <li id="description"></li>
             </ul>
           </div>
-          <div class="row">
+          <div class="row align-items-center">
             <div class="col-6 d-flex">
-              <div class="weather-temperature">
+              <div class="weather-temperature d-flex align-items-center">
                 <img src="" alt="clouds" id="icon" />
-                <strong id="temperature"></strong
-                ><span class="units">°C | <a href="#">°F</a> </span>
+                <div>
+                  <strong id="temperature"></strong>
+                  <span class="units">°C | <a href="#">°F</a> </span>
+                </div>
               </div>
             </div>
             <div class="col-6">
