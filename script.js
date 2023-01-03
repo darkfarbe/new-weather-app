@@ -24,19 +24,45 @@ function formatDate(timestamp) {
   return `${day} ${hours}:${minutes}`;
 }
 
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast-temperature");
+
+  let forecastHTML = `<div class="row">`;
+
+  let days = ["Tue", "Wed", "Thu", "Fri", "Sat"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+      <div class="col-2">
+      <div class="weather-forecast-date">${day}</div>
+
+      <img
+        src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/scattered-clouds-night.png"
+        alt=""
+        width="45"
+      />
+      <div class="weather-forecast-temperature">
+        <span class="max-temperature">18°</span>
+        <span class="min-temperature">12°</span>
+      </div>
+    </div>
+  
+  `;
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+
+  forecastElement.innerHTML = forecastHTML;
+}
+
 function displayTemperature(response) {
   let temperatureElement = document.querySelector("#temperature");
-
   let cityElement = document.querySelector("#city");
-
   let descriptionElement = document.querySelector("#description");
-
   let humidityElement = document.querySelector("#humidity");
-
   let windElement = document.querySelector("#wind");
-
   let dateElement = document.querySelector("#date");
-
   let iconElement = document.querySelector("#icon");
 
   celsiusTemperature = response.data.temperature.current;
@@ -106,3 +132,4 @@ let celsiusConvert = document.querySelector("#celsius-convert");
 celsiusConvert.addEventListener("click", showCelsiusTemp);
 
 search("New York");
+displayForecast();
