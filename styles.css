@@ -91,3 +91,8 @@ a {
 .weather-forecast-temperature {
   font-size: 16px;
 }
+
+.cityName {
+  color: black;
+  font-weight: bold;
+}

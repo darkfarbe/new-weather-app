@@ -13,6 +13,10 @@
     />
     <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
     <link rel="stylesheet" href="styles.css" />
+    <script
+      src="https://kit.fontawesome.com/1150b18030.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
     <div class="container">
@@ -20,7 +24,7 @@
         <div class="weather-app">
           <form id="search-form" class="mb-3">
             <div class="row">
-              <div class="col-9">
+              <div class="col-8">
                 <input
                   type="search"
                   placeholder="Write a city"
@@ -28,17 +32,24 @@
                   id="city-input"
                 />
               </div>
-              <div class="col-3">
+              <div class="col-2">
                 <input
                   type="submit"
                   value="Search"
                   class="btn btn-primary w-100"
                 />
               </div>
+              <div class="col-2">
+                <button class="btn btn-success">
+                  <span title="My location">
+                    <i class="fa-solid fa-location-crosshairs"></i>
+                  </span>
+                </button>
+              </div>
             </div>
           </form>
           <div class="overview">
-            <h1 id="city" class="mb-1"></h1>
+            <h1 id="city" class="cityName mb-1"></h1>
             <ul>
               <li id="date"></li>
               <li id="description"></li>
