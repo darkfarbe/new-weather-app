@@ -117,37 +117,33 @@ function search(city) {
 function handleSubmit(event) {
   event.preventDefault();
   let cityInputElement = document.querySelector("#city-input");
+  console.log("searching");
   search(cityInputElement.value);
-}
-
-function showFahrenheitTemp(event) {
-  event.preventDefault();
-
-  let temperatureElement = document.querySelector("#temperature");
-
-  celsiusConvert.classList.remove("active");
-  fahrenheitConvert.classList.add("active");
-  let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
-  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
 }
 
 function showCelsiusTemp(event) {
   event.preventDefault();
-  celsiusConvert.classList.add("active");
-  fahrenheitConvert.classList.remove("active");
+
   let temperatureElement = document.querySelector("#temperature");
   temperatureElement.innerHTML = Math.round(celsiusTemperature);
+}
+
+function getMyLocation(ev) {
+  ev.preventDefault();
+  let a = navigator.geolocation.getCurrentPosition(getWeatherFromMyPosition);
+}
+
+function getWeatherFromMyPosition(event) {
+  let apiKey = "fbde5cao1a5748d107tcc6736273f093";
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?lon=${event.coords.longitude}&lat=${event.coords.latitude}&key=${apiKey}`;
+  axios.get(apiUrl).then(displayTemperature);
 }
 
 let celsiusTemperature = null;
 
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
-
-let fahrenheitConvert = document.querySelector("#fahrenheit-convert");
-fahrenheitConvert.addEventListener("click", showFahrenheitTemp);
-
-let celsiusConvert = document.querySelector("#celsius-convert");
-celsiusConvert.addEventListener("click", showCelsiusTemp);
+let myLocationButton = document.querySelector("#myLocation");
+myLocationButton.addEventListener("click", getMyLocation);
 
 search("New York");
